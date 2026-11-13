@@ -1,0 +1,1269 @@
+version: 2
+
+sources:
+  - name: contoso_raw
+    description: "This is source file for Contoso Dataset"
+    database: contoso-dbt-airflow
+    schema: contoso_raw
+    tables:
+      - name: DimAccount
+        description: ""
+        columns:
+          - name: AccountKey
+            data_type: int64
+            description: ""
+          - name: AccountLabel
+            data_type: string
+            description: ""
+          - name: AccountName
+            data_type: string
+            description: ""
+          - name: AccountDescription
+            data_type: string
+            description: ""
+          - name: AccountType
+            data_type: string
+            description: ""
+          - name: Operator
+            data_type: string
+            description: ""
+          - name: CustomMembers
+            data_type: string
+            description: ""
+          - name: ValueType
+            data_type: string
+            description: ""
+          - name: CustomMemberOptions
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+          - name: ParentAccountKey
+            data_type: int64
+            description: ""
+
+      - name: DimChannel
+        description: ""
+        columns:
+          - name: ChannelKey
+            data_type: int64
+            description: ""
+          - name: ChannelLabel
+            data_type: string
+            description: ""
+          - name: ChannelName
+            data_type: string
+            description: ""
+          - name: ChannelDescription
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimCurrency
+        description: ""
+        columns:
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: CurrencyLabel
+            data_type: string
+            description: ""
+          - name: CurrencyName
+            data_type: string
+            description: ""
+          - name: CurrencyDescription
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimCustomer
+        description: ""
+        columns:
+          - name: CustomerKey
+            data_type: int64
+            description: ""
+          - name: GeographyKey
+            data_type: int64
+            description: ""
+          - name: CustomerLabel
+            data_type: string
+            description: ""
+          - name: Title
+            data_type: string
+            description: ""
+          - name: FirstName
+            data_type: string
+            description: ""
+          - name: MiddleName
+            data_type: string
+            description: ""
+          - name: LastName
+            data_type: string
+            description: ""
+          - name: NameStyle
+            data_type: boolean
+            description: ""
+          - name: BirthDate
+            data_type: string
+            description: ""
+          - name: MaritalStatus
+            data_type: string
+            description: ""
+          - name: Suffix
+            data_type: string
+            description: ""
+          - name: Gender
+            data_type: string
+            description: ""
+          - name: EmailAddress
+            data_type: string
+            description: ""
+          - name: YearlyIncome
+            data_type: float64
+            description: ""
+          - name: TotalChildren
+            data_type: float64
+            description: ""
+          - name: NumberChildrenAtHome
+            data_type: float64
+            description: ""
+          - name: Education
+            data_type: string
+            description: ""
+          - name: Occupation
+            data_type: string
+            description: ""
+          - name: HouseOwnerFlag
+            data_type: string
+            description: ""
+          - name: NumberCarsOwned
+            data_type: float64
+            description: ""
+          - name: AddressLine1
+            data_type: string
+            description: ""
+          - name: AddressLine2
+            data_type: string
+            description: ""
+          - name: Phone
+            data_type: string
+            description: ""
+          - name: DateFirstPurchase
+            data_type: string
+            description: ""
+          - name: CustomerType
+            data_type: string
+            description: ""
+          - name: CompanyName
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimDate
+        description: ""
+        columns:
+          - name: Datekey
+            data_type: datetime
+            description: ""
+          - name: FullDateLabel
+            data_type: string
+            description: ""
+          - name: DateDescription
+            data_type: string
+            description: ""
+          - name: CalendarYear
+            data_type: int64
+            description: ""
+          - name: CalendarYearLabel
+            data_type: string
+            description: ""
+          - name: CalendarHalfYear
+            data_type: int64
+            description: ""
+          - name: CalendarHalfYearLabel
+            data_type: string
+            description: ""
+          - name: CalendarQuarter
+            data_type: int64
+            description: ""
+          - name: CalendarQuarterLabel
+            data_type: string
+            description: ""
+          - name: CalendarMonth
+            data_type: int64
+            description: ""
+          - name: CalendarMonthLabel
+            data_type: string
+            description: ""
+          - name: CalendarWeek
+            data_type: int64
+            description: ""
+          - name: CalendarWeekLabel
+            data_type: string
+            description: ""
+          - name: CalendarDayOfWeek
+            data_type: int64
+            description: ""
+          - name: CalendarDayOfWeekLabel
+            data_type: string
+            description: ""
+          - name: FiscalYear
+            data_type: int64
+            description: ""
+          - name: FiscalYearLabel
+            data_type: string
+            description: ""
+          - name: FiscalHalfYear
+            data_type: int64
+            description: ""
+          - name: FiscalHalfYearLabel
+            data_type: string
+            description: ""
+          - name: FiscalQuarter
+            data_type: int64
+            description: ""
+          - name: FiscalQuarterLabel
+            data_type: string
+            description: ""
+          - name: FiscalMonth
+            data_type: int64
+            description: ""
+          - name: FiscalMonthLabel
+            data_type: string
+            description: ""
+          - name: IsWorkDay
+            data_type: string
+            description: ""
+          - name: IsHoliday
+            data_type: int64
+            description: ""
+          - name: HolidayName
+            data_type: string
+            description: ""
+          - name: EuropeSeason
+            data_type: string
+            description: ""
+          - name: NorthAmericaSeason
+            data_type: string
+            description: ""
+          - name: AsiaSeason
+            data_type: string
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+
+      - name: DimEmployee
+        description: ""
+        columns:
+          - name: EmployeeKey
+            data_type: int64
+            description: ""
+          - name: ParentEmployeeKey
+            data_type: float64
+            description: ""
+          - name: FirstName
+            data_type: string
+            description: ""
+          - name: LastName
+            data_type: string
+            description: ""
+          - name: MiddleName
+            data_type: string
+            description: ""
+          - name: Title
+            data_type: string
+            description: ""
+          - name: HireDate
+            data_type: string
+            description: ""
+          - name: BirthDate
+            data_type: string
+            description: ""
+          - name: EmailAddress
+            data_type: string
+            description: ""
+          - name: Phone
+            data_type: string
+            description: ""
+          - name: MaritalStatus
+            data_type: string
+            description: ""
+          - name: EmergencyContactName
+            data_type: string
+            description: ""
+          - name: EmergencyContactPhone
+            data_type: string
+            description: ""
+          - name: SalariedFlag
+            data_type: boolean
+            description: ""
+          - name: Gender
+            data_type: string
+            description: ""
+          - name: PayFrequency
+            data_type: int64
+            description: ""
+          - name: BaseRate
+            data_type: float64
+            description: ""
+          - name: VacationHours
+            data_type: int64
+            description: ""
+          - name: CurrentFlag
+            data_type: boolean
+            description: ""
+          - name: SalesPersonFlag
+            data_type: boolean
+            description: ""
+          - name: DepartmentName
+            data_type: string
+            description: ""
+          - name: StartDate
+            data_type: string
+            description: ""
+          - name: EndDate
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimEntity
+        description: ""
+        columns:
+          - name: EntityKey
+            data_type: int64
+            description: ""
+          - name: EntityLabel
+            data_type: string
+            description: ""
+          - name: ParentEntityKey
+            data_type: float64
+            description: ""
+          - name: ParentEntityLabel
+            data_type: string
+            description: ""
+          - name: EntityName
+            data_type: string
+            description: ""
+          - name: EntityDescription
+            data_type: string
+            description: ""
+          - name: EntityType
+            data_type: string
+            description: ""
+          - name: StartDate
+            data_type: datetime
+            description: ""
+          - name: EndDate
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimGeography
+        description: ""
+        columns:
+          - name: GeographyKey
+            data_type: int64
+            description: ""
+          - name: GeographyType
+            data_type: string
+            description: ""
+          - name: ContinentName
+            data_type: string
+            description: ""
+          - name: CityName
+            data_type: string
+            description: ""
+          - name: StateProvinceName
+            data_type: string
+            description: ""
+          - name: RegionCountryName
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimMachine
+        description: ""
+        columns:
+          - name: MachineKey
+            data_type: int64
+            description: ""
+          - name: MachineLabel
+            data_type: string
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: MachineType
+            data_type: string
+            description: ""
+          - name: MachineName
+            data_type: string
+            description: ""
+          - name: MachineDescription
+            data_type: string
+            description: ""
+          - name: VendorName
+            data_type: string
+            description: ""
+          - name: MachineOS
+            data_type: string
+            description: ""
+          - name: MachineSource
+            data_type: string
+            description: ""
+          - name: MachineHardware
+            data_type: string
+            description: ""
+          - name: MachineSoftware
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: ServiceStartDate
+            data_type: datetime
+            description: ""
+          - name: DecommissionDate
+            data_type: datetime
+            description: ""
+          - name: LastModifiedDate
+            data_type: datetime
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimOutage
+        description: ""
+        columns:
+          - name: OutageKey
+            data_type: int64
+            description: ""
+          - name: OutageLabel
+            data_type: string
+            description: ""
+          - name: OutageName
+            data_type: string
+            description: ""
+          - name: OutageDescription
+            data_type: string
+            description: ""
+          - name: OutageType
+            data_type: string
+            description: ""
+          - name: OutageTypeDescription
+            data_type: string
+            description: ""
+          - name: OutageSubType
+            data_type: string
+            description: ""
+          - name: OutageSubTypeDescription
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimProduct
+        description: ""
+        columns:
+          - name: ProductKey
+            data_type: int64
+            description: ""
+          - name: ProductLabel
+            data_type: string
+            description: ""
+          - name: ProductName
+            data_type: string
+            description: ""
+          - name: ProductDescription
+            data_type: string
+            description: ""
+          - name: ProductSubcategoryKey
+            data_type: int64
+            description: ""
+          - name: Manufacturer
+            data_type: string
+            description: ""
+          - name: BrandName
+            data_type: string
+            description: ""
+          - name: ClassID
+            data_type: string
+            description: ""
+          - name: ClassName
+            data_type: string
+            description: ""
+          - name: StyleID
+            data_type: string
+            description: ""
+          - name: StyleName
+            data_type: string
+            description: ""
+          - name: ColorID
+            data_type: string
+            description: ""
+          - name: ColorName
+            data_type: string
+            description: ""
+          - name: Size
+            data_type: string
+            description: ""
+          - name: SizeRange
+            data_type: string
+            description: ""
+          - name: SizeUnitMeasureID
+            data_type: string
+            description: ""
+          - name: Weight
+            data_type: float64
+            description: ""
+          - name: WeightUnitMeasureID
+            data_type: string
+            description: ""
+          - name: UnitOfMeasureID
+            data_type: string
+            description: ""
+          - name: UnitOfMeasureName
+            data_type: string
+            description: ""
+          - name: StockTypeID
+            data_type: string
+            description: ""
+          - name: StockTypeName
+            data_type: string
+            description: ""
+          - name: UnitCost
+            data_type: float64
+            description: ""
+          - name: UnitPrice
+            data_type: float64
+            description: ""
+          - name: AvailableForSaleDate
+            data_type: datetime
+            description: ""
+          - name: StopSaleDate
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: ImageURL
+            data_type: string
+            description: ""
+          - name: ProductURL
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimProductCategory
+        description: ""
+        columns:
+          - name: ProductCategoryKey
+            data_type: int64
+            description: ""
+          - name: ProductCategoryLabel
+            data_type: string
+            description: ""
+          - name: ProductCategoryName
+            data_type: string
+            description: ""
+          - name: ProductCategoryDescription
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimProductSubcategory
+        description: ""
+        columns:
+          - name: ProductSubcategoryKey
+            data_type: int64
+            description: ""
+          - name: ProductSubcategoryLabel
+            data_type: string
+            description: ""
+          - name: ProductSubcategoryName
+            data_type: string
+            description: ""
+          - name: ProductSubcategoryDescription
+            data_type: string
+            description: ""
+          - name: ProductCategoryKey
+            data_type: int64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimPromotion
+        description: ""
+        columns:
+          - name: PromotionKey
+            data_type: int64
+            description: ""
+          - name: PromotionLabel
+            data_type: string
+            description: ""
+          - name: PromotionName
+            data_type: string
+            description: ""
+          - name: PromotionDescription
+            data_type: string
+            description: ""
+          - name: DiscountPercent
+            data_type: float64
+            description: ""
+          - name: PromotionType
+            data_type: string
+            description: ""
+          - name: PromotionCategory
+            data_type: string
+            description: ""
+          - name: StartDate
+            data_type: datetime
+            description: ""
+          - name: EndDate
+            data_type: datetime
+            description: ""
+          - name: MinQuantity
+            data_type: string
+            description: ""
+          - name: MaxQuantity
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimSalesTerritory
+        description: ""
+        columns:
+          - name: SalesTerritoryKey
+            data_type: int64
+            description: ""
+          - name: GeographyKey
+            data_type: int64
+            description: ""
+          - name: SalesTerritoryLabel
+            data_type: string
+            description: ""
+          - name: SalesTerritoryName
+            data_type: string
+            description: ""
+          - name: SalesTerritoryRegion
+            data_type: string
+            description: ""
+          - name: SalesTerritoryCountry
+            data_type: string
+            description: ""
+          - name: SalesTerritoryGroup
+            data_type: string
+            description: ""
+          - name: SalesTerritoryLevel
+            data_type: string
+            description: ""
+          - name: SalesTerritoryManager
+            data_type: int64
+            description: ""
+          - name: StartDate
+            data_type: datetime
+            description: ""
+          - name: EndDate
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimScenario
+        description: ""
+        columns:
+          - name: ScenarioKey
+            data_type: int64
+            description: ""
+          - name: ScenarioLabel
+            data_type: string
+            description: ""
+          - name: ScenarioName
+            data_type: string
+            description: ""
+          - name: ScenarioDescription
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: DimStore
+        description: ""
+        columns:
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: GeographyKey
+            data_type: int64
+            description: ""
+          - name: StoreManager
+            data_type: int64
+            description: ""
+          - name: StoreType
+            data_type: string
+            description: ""
+          - name: StoreName
+            data_type: string
+            description: ""
+          - name: StoreDescription
+            data_type: string
+            description: ""
+          - name: Status
+            data_type: string
+            description: ""
+          - name: OpenDate
+            data_type: datetime
+            description: ""
+          - name: CloseDate
+            data_type: datetime
+            description: ""
+          - name: EntityKey
+            data_type: int64
+            description: ""
+          - name: ZipCode
+            data_type: string
+            description: ""
+          - name: ZipCodeExtension
+            data_type: string
+            description: ""
+          - name: StorePhone
+            data_type: string
+            description: ""
+          - name: StoreFax
+            data_type: string
+            description: ""
+          - name: AddressLine1
+            data_type: string
+            description: ""
+          - name: AddressLine2
+            data_type: string
+            description: ""
+          - name: CloseReason
+            data_type: string
+            description: ""
+          - name: EmployeeCount
+            data_type: float64
+            description: ""
+          - name: SellingAreaSize
+            data_type: float64
+            description: ""
+          - name: LastRemodelDate
+            data_type: datetime
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactExchangeRate
+        description: ""
+        columns:
+          - name: ExchangeRateKey
+            data_type: int64
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: AverageRate
+            data_type: float64
+            description: ""
+          - name: EndOfDayRate
+            data_type: float64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactInventory
+        description: ""
+        columns:
+          - name: InventoryKey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: ProductKey
+            data_type: int64
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: OnHandQuantity
+            data_type: int64
+            description: ""
+          - name: OnOrderQuantity
+            data_type: int64
+            description: ""
+          - name: SafetyStockQuantity
+            data_type: int64
+            description: ""
+          - name: UnitCost
+            data_type: float64
+            description: ""
+          - name: DaysInStock
+            data_type: int64
+            description: ""
+          - name: MinDayInStock
+            data_type: int64
+            description: ""
+          - name: MaxDayInStock
+            data_type: int64
+            description: ""
+          - name: Aging
+            data_type: int64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactITMachine
+        description: ""
+        columns:
+          - name: ITMachinekey
+            data_type: int64
+            description: ""
+          - name: MachineKey
+            data_type: int64
+            description: ""
+          - name: Datekey
+            data_type: datetime
+            description: ""
+          - name: CostAmount
+            data_type: float64
+            description: ""
+          - name: CostType
+            data_type: string
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactITSLA
+        description: ""
+        columns:
+          - name: ITSLAkey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: MachineKey
+            data_type: int64
+            description: ""
+          - name: OutageKey
+            data_type: int64
+            description: ""
+          - name: OutageStartTime
+            data_type: datetime
+            description: ""
+          - name: OutageEndTime
+            data_type: datetime
+            description: ""
+          - name: DownTime
+            data_type: int64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactOnlineSales
+        description: ""
+        columns:
+          - name: OnlineSalesKey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: ProductKey
+            data_type: int64
+            description: ""
+          - name: PromotionKey
+            data_type: int64
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: CustomerKey
+            data_type: int64
+            description: ""
+          - name: SalesOrderNumber
+            data_type: string
+            description: ""
+          - name: SalesOrderLineNumber
+            data_type: int64
+            description: ""
+          - name: SalesQuantity
+            data_type: int64
+            description: ""
+          - name: SalesAmount
+            data_type: float64
+            description: ""
+          - name: ReturnQuantity
+            data_type: int64
+            description: ""
+          - name: ReturnAmount
+            data_type: float64
+            description: ""
+          - name: DiscountQuantity
+            data_type: int64
+            description: ""
+          - name: DiscountAmount
+            data_type: float64
+            description: ""
+          - name: TotalCost
+            data_type: float64
+            description: ""
+          - name: UnitCost
+            data_type: float64
+            description: ""
+          - name: UnitPrice
+            data_type: float64
+            description: ""
+          - name: ETLLoadID
+            data_type: string
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: string
+            description: ""
+
+      - name: FactSales
+        description: ""
+        columns:
+          - name: SalesKey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: channelKey
+            data_type: int64
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: ProductKey
+            data_type: int64
+            description: ""
+          - name: PromotionKey
+            data_type: int64
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: UnitCost
+            data_type: float64
+            description: ""
+          - name: UnitPrice
+            data_type: float64
+            description: ""
+          - name: SalesQuantity
+            data_type: int64
+            description: ""
+          - name: ReturnQuantity
+            data_type: int64
+            description: ""
+          - name: ReturnAmount
+            data_type: float64
+            description: ""
+          - name: DiscountQuantity
+            data_type: int64
+            description: ""
+          - name: DiscountAmount
+            data_type: float64
+            description: ""
+          - name: TotalCost
+            data_type: float64
+            description: ""
+          - name: SalesAmount
+            data_type: float64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactSalesQuota
+        description: ""
+        columns:
+          - name: SalesQuotaKey
+            data_type: int64
+            description: ""
+          - name: ChannelKey
+            data_type: int64
+            description: ""
+          - name: StoreKey
+            data_type: int64
+            description: ""
+          - name: ProductKey
+            data_type: int64
+            description: ""
+          - name: DateKey
+            data_type: datetime
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: ScenarioKey
+            data_type: int64
+            description: ""
+          - name: SalesQuantityQuota
+            data_type: float64
+            description: ""
+          - name: SalesAmountQuota
+            data_type: float64
+            description: ""
+          - name: GrossMarginQuota
+            data_type: float64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: FactStrategyPlan
+        description: ""
+        columns:
+          - name: StrategyPlanKey
+            data_type: int64
+            description: ""
+          - name: Datekey
+            data_type: datetime
+            description: ""
+          - name: EntityKey
+            data_type: int64
+            description: ""
+          - name: ScenarioKey
+            data_type: int64
+            description: ""
+          - name: AccountKey
+            data_type: int64
+            description: ""
+          - name: CurrencyKey
+            data_type: int64
+            description: ""
+          - name: ProductCategoryKey
+            data_type: int64
+            description: ""
+          - name: Amount
+            data_type: float64
+            description: ""
+          - name: ETLLoadID
+            data_type: int64
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+
+      - name: sysdiagrams
+        description: ""
+        columns:
+          - name: name
+            data_type: string
+            description: ""
+          - name: principal_id
+            data_type: int64
+            description: ""
+          - name: diagram_id
+            data_type: int64
+            description: ""
+          - name: version
+            data_type: int64
+            description: ""
+          - name: definition
+            data_type: bytes
+            description: ""
+          - name: UpdateDate
+            data_type: datetime
+            description: ""
+          - name: Updated_At
+            data_type: datetime
+            description: ""
+          - name: LoadDate
+            data_type: datetime
+            description: ""
