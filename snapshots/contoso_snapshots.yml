@@ -1,0 +1,411 @@
+# Source -> Snapshot: Contoso current-state tables
+version: 2
+
+snapshots:
+  - name: snaps_DimAccount
+    relation: source('contoso_raw', 'DimAccount')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimAccount
+      unique_key: AccountKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimChannel
+    relation: source('contoso_raw', 'DimChannel')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimChannel
+      unique_key: ChannelKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimCurrency
+    relation: source('contoso_raw', 'DimCurrency')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimCurrency
+      unique_key: CurrencyKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimCustomer
+    relation: source('contoso_raw', 'DimCustomer')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimCustomer
+      unique_key: CustomerKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimEmployee
+    relation: source('contoso_raw', 'DimEmployee')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimEmployee
+      unique_key: EmployeeKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimEntity
+    relation: source('contoso_raw', 'DimEntity')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimEntity
+      unique_key: EntityKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimGeography
+    relation: source('contoso_raw', 'DimGeography')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimGeography
+      unique_key: GeographyKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimMachine
+    relation: source('contoso_raw', 'DimMachine')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimMachine
+      unique_key: MachineKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimOutage
+    relation: source('contoso_raw', 'DimOutage')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimOutage
+      unique_key: OutageKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimProduct
+    relation: source('contoso_raw', 'DimProduct')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimProduct
+      unique_key: ProductKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimProductCategory
+    relation: source('contoso_raw', 'DimProductCategory')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimProductCategory
+      unique_key: ProductCategoryKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimProductSubcategory
+    relation: source('contoso_raw', 'DimProductSubcategory')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimProductSubcategory
+      unique_key: ProductSubcategoryKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimPromotion
+    relation: source('contoso_raw', 'DimPromotion')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimPromotion
+      unique_key: PromotionKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimSalesTerritory
+    relation: source('contoso_raw', 'DimSalesTerritory')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimSalesTerritory
+      unique_key: SalesTerritoryKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimScenario
+    relation: source('contoso_raw', 'DimScenario')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimScenario
+      unique_key: ScenarioKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_DimStore
+    relation: source('contoso_raw', 'DimStore')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_DimStore
+      unique_key: StoreKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactExchangeRate
+    relation: source('contoso_raw', 'FactExchangeRate')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactExchangeRate
+      unique_key: ExchangeRateKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactInventory
+    relation: source('contoso_raw', 'FactInventory')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactInventory
+      unique_key: InventoryKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactITMachine
+    relation: source('contoso_raw', 'FactITMachine')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactITMachine
+      unique_key: ITMachinekey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactITSLA
+    relation: source('contoso_raw', 'FactITSLA')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactITSLA
+      unique_key: ITSLAkey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactOnlineSales
+    relation: source('contoso_raw', 'FactOnlineSales')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactOnlineSales
+      unique_key: OnlineSalesKey
+      strategy: check
+      check_cols: all
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactSales
+    relation: source('contoso_raw', 'FactSales')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactSales
+      unique_key: SalesKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactSalesQuota
+    relation: source('contoso_raw', 'FactSalesQuota')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactSalesQuota
+      unique_key: SalesQuotaKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]
+
+  - name: snaps_FactStrategyPlan
+    relation: source('contoso_raw', 'FactStrategyPlan')
+    config:
+      database: contoso-dbt-airflow
+      schema: snapshots
+      alias: snp_FactStrategyPlan
+      unique_key: StrategyPlanKey
+      strategy: timestamp
+      updated_at: UpdateDate
+      hard_deletes: invalidate
+      snapshot_meta_column_names:
+        dbt_valid_from: ValidFrom
+        dbt_valid_to: ValidTo
+        dbt_updated_at: UpdatedAt
+        dbt_scd_id: SnapshotSCDID
+      tags: [snapshot, contoso]

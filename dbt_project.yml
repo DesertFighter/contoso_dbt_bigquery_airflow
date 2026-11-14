@@ -44,3 +44,10 @@ models:
       +materialized: materialized_view
       +schema: gold
       +tags: ["gold"]
+
+# Snapshot Configuration
+snapshots:
+  contoso_dbt_bigquery_airflow:
+    +materialized: snapshot
+    +schema: snapshots
+    +tags: ["snapshot", "contoso"]
