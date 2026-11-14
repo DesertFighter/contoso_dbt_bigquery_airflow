@@ -12,6 +12,9 @@ sources:
           - name: AccountKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: AccountLabel
             data_type: string
             description: ""
@@ -55,12 +58,17 @@ sources:
           - name: ChannelKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ChannelLabel
             data_type: string
             description: ""
           - name: ChannelName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: ChannelDescription
             data_type: string
             description: ""
@@ -80,12 +88,17 @@ sources:
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: CurrencyLabel
             data_type: string
             description: ""
           - name: CurrencyName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: CurrencyDescription
             data_type: string
             description: ""
@@ -105,9 +118,17 @@ sources:
           - name: CustomerKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: GeographyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimGeography') }}"
+                    field: GeographyKey
           - name: CustomerLabel
             data_type: string
             description: ""
@@ -190,102 +211,7 @@ sources:
             data_type: datetime
             description: ""
 
-      - name: DimDate
-        description: ""
-        columns:
-          - name: Datekey
-            data_type: datetime
-            description: ""
-          - name: FullDateLabel
-            data_type: string
-            description: ""
-          - name: DateDescription
-            data_type: string
-            description: ""
-          - name: CalendarYear
-            data_type: int64
-            description: ""
-          - name: CalendarYearLabel
-            data_type: string
-            description: ""
-          - name: CalendarHalfYear
-            data_type: int64
-            description: ""
-          - name: CalendarHalfYearLabel
-            data_type: string
-            description: ""
-          - name: CalendarQuarter
-            data_type: int64
-            description: ""
-          - name: CalendarQuarterLabel
-            data_type: string
-            description: ""
-          - name: CalendarMonth
-            data_type: int64
-            description: ""
-          - name: CalendarMonthLabel
-            data_type: string
-            description: ""
-          - name: CalendarWeek
-            data_type: int64
-            description: ""
-          - name: CalendarWeekLabel
-            data_type: string
-            description: ""
-          - name: CalendarDayOfWeek
-            data_type: int64
-            description: ""
-          - name: CalendarDayOfWeekLabel
-            data_type: string
-            description: ""
-          - name: FiscalYear
-            data_type: int64
-            description: ""
-          - name: FiscalYearLabel
-            data_type: string
-            description: ""
-          - name: FiscalHalfYear
-            data_type: int64
-            description: ""
-          - name: FiscalHalfYearLabel
-            data_type: string
-            description: ""
-          - name: FiscalQuarter
-            data_type: int64
-            description: ""
-          - name: FiscalQuarterLabel
-            data_type: string
-            description: ""
-          - name: FiscalMonth
-            data_type: int64
-            description: ""
-          - name: FiscalMonthLabel
-            data_type: string
-            description: ""
-          - name: IsWorkDay
-            data_type: string
-            description: ""
-          - name: IsHoliday
-            data_type: int64
-            description: ""
-          - name: HolidayName
-            data_type: string
-            description: ""
-          - name: EuropeSeason
-            data_type: string
-            description: ""
-          - name: NorthAmericaSeason
-            data_type: string
-            description: ""
-          - name: AsiaSeason
-            data_type: string
-            description: ""
-          - name: UpdateDate
-            data_type: datetime
-            description: ""
-          - name: LoadDate
-            data_type: datetime
-            description: ""
+      
 
       - name: DimEmployee
         description: ""
@@ -293,6 +219,9 @@ sources:
           - name: EmployeeKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ParentEmployeeKey
             data_type: float64
             description: ""
@@ -378,6 +307,9 @@ sources:
           - name: EntityKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: EntityLabel
             data_type: string
             description: ""
@@ -421,6 +353,9 @@ sources:
           - name: GeographyKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: GeographyType
             data_type: string
             description: ""
@@ -452,12 +387,20 @@ sources:
           - name: MachineKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: MachineLabel
             data_type: string
             description: ""
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: MachineType
             data_type: string
             description: ""
@@ -510,6 +453,9 @@ sources:
           - name: OutageKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: OutageLabel
             data_type: string
             description: ""
@@ -547,18 +493,28 @@ sources:
           - name: ProductKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ProductLabel
             data_type: string
             description: ""
           - name: ProductName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: ProductDescription
             data_type: string
             description: ""
           - name: ProductSubcategoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProductSubcategory') }}"
+                    field: ProductSubcategoryKey
           - name: Manufacturer
             data_type: string
             description: ""
@@ -613,9 +569,17 @@ sources:
           - name: UnitCost
             data_type: float64
             description: ""
+            data_tests:
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 0
           - name: UnitPrice
             data_type: float64
             description: ""
+            data_tests:
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 0
           - name: AvailableForSaleDate
             data_type: datetime
             description: ""
@@ -647,12 +611,17 @@ sources:
           - name: ProductCategoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ProductCategoryLabel
             data_type: string
             description: ""
           - name: ProductCategoryName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: ProductCategoryDescription
             data_type: string
             description: ""
@@ -672,18 +641,28 @@ sources:
           - name: ProductSubcategoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ProductSubcategoryLabel
             data_type: string
             description: ""
           - name: ProductSubcategoryName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: ProductSubcategoryDescription
             data_type: string
             description: ""
           - name: ProductCategoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProductCategory') }}"
+                    field: ProductCategoryKey
           - name: ETLLoadID
             data_type: int64
             description: ""
@@ -700,12 +679,17 @@ sources:
           - name: PromotionKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: PromotionLabel
             data_type: string
             description: ""
           - name: PromotionName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: PromotionDescription
             data_type: string
             description: ""
@@ -746,9 +730,17 @@ sources:
           - name: SalesTerritoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: GeographyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimGeography') }}"
+                    field: GeographyKey
           - name: SalesTerritoryLabel
             data_type: string
             description: ""
@@ -795,12 +787,17 @@ sources:
           - name: ScenarioKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ScenarioLabel
             data_type: string
             description: ""
           - name: ScenarioName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: ScenarioDescription
             data_type: string
             description: ""
@@ -820,9 +817,17 @@ sources:
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: GeographyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimGeography') }}"
+                    field: GeographyKey
           - name: StoreManager
             data_type: int64
             description: ""
@@ -832,6 +837,8 @@ sources:
           - name: StoreName
             data_type: string
             description: ""
+            data_tests:
+              - dbt_utils.not_empty_string
           - name: StoreDescription
             data_type: string
             description: ""
@@ -847,6 +854,11 @@ sources:
           - name: EntityKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimEntity') }}"
+                    field: EntityKey
           - name: ZipCode
             data_type: string
             description: ""
@@ -893,12 +905,25 @@ sources:
           - name: ExchangeRateKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: AverageRate
             data_type: float64
             description: ""
@@ -921,18 +946,41 @@ sources:
           - name: InventoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: ProductKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProduct') }}"
+                    field: ProductKey
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: OnHandQuantity
             data_type: int64
             description: ""
@@ -973,12 +1021,25 @@ sources:
           - name: ITMachinekey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: MachineKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimMachine') }}"
+                    field: MachineKey
           - name: Datekey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: CostAmount
             data_type: float64
             description: ""
@@ -1001,18 +1062,41 @@ sources:
           - name: ITSLAkey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: MachineKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimMachine') }}"
+                    field: MachineKey
           - name: OutageKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimOutage') }}"
+                    field: OutageKey
           - name: OutageStartTime
             data_type: datetime
             description: ""
@@ -1032,36 +1116,77 @@ sources:
             data_type: datetime
             description: ""
 
+        data_tests:
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: OutageEndTime >= OutageStartTime
       - name: FactOnlineSales
         description: ""
         columns:
           - name: OnlineSalesKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: ProductKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProduct') }}"
+                    field: ProductKey
           - name: PromotionKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimPromotion') }}"
+                    field: PromotionKey
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: CustomerKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCustomer') }}"
+                    field: CustomerKey
           - name: SalesOrderNumber
             data_type: string
             description: ""
           - name: SalesOrderLineNumber
             data_type: int64
             description: ""
+            data_tests:
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 0
           - name: SalesQuantity
             data_type: int64
             description: ""
@@ -1099,30 +1224,69 @@ sources:
             data_type: string
             description: ""
 
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments:
+                combination_of_columns:
+                  - SalesOrderNumber
+                  - SalesOrderLineNumber
       - name: FactSales
         description: ""
         columns:
           - name: SalesKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: channelKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimChannel') }}"
+                    field: ChannelKey
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: ProductKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProduct') }}"
+                    field: ProductKey
           - name: PromotionKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimPromotion') }}"
+                    field: PromotionKey
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: UnitCost
             data_type: float64
             description: ""
@@ -1166,24 +1330,57 @@ sources:
           - name: SalesQuotaKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: ChannelKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimChannel') }}"
+                    field: ChannelKey
           - name: StoreKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimStore') }}"
+                    field: StoreKey
           - name: ProductKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProduct') }}"
+                    field: ProductKey
           - name: DateKey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: ScenarioKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimScenario') }}"
+                    field: ScenarioKey
           - name: SalesQuantityQuota
             data_type: float64
             description: ""
@@ -1209,24 +1406,57 @@ sources:
           - name: StrategyPlanKey
             data_type: int64
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: Datekey
             data_type: datetime
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimDate') }}"
+                    field: Datekey
           - name: EntityKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimEntity') }}"
+                    field: EntityKey
           - name: ScenarioKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimScenario') }}"
+                    field: ScenarioKey
           - name: AccountKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimAccount') }}"
+                    field: AccountKey
           - name: CurrencyKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimCurrency') }}"
+                    field: CurrencyKey
           - name: ProductCategoryKey
             data_type: int64
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: "{{ source('contoso_raw', 'DimProductCategory') }}"
+                    field: ProductCategoryKey
           - name: Amount
             data_type: float64
             description: ""
